@@ -18,6 +18,7 @@
     let url = params.get("url");
     if (url) {
       setIframeSource(url);
+      document.getElementById('videoUrl').value = url;
     }
   }
 
