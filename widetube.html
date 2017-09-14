@@ -4,70 +4,15 @@
 		<meta charset="UTF-8"> 
 		<title>Video Yay!</title>
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
-		<style>
-			body {
-				background-color: #efefef;
-			}
-			.container {
-				position: relative;
-				width: 100%;
-				height: 0;
-				padding-bottom: 56.25%;
-			}
-			.video {
-				position: absolute;
-				top: 0;
-				left: 0;
-				width: 100%;
-				height: 100%;
-				max-height: 95%;
-			}
-			.controls {
-				display: flex;
-				margin: .5em;
-			}
-			.controls__form {
-				display: flex;
-				width: 100%;
-			}
-			.controls__form input {
-				flex-grow: 1;
-				border: 1px solid #ccc;
-			}
-			.btn {
-				font-family: 'Open Sans', sans-serif;
-				font-size: 10px;
-				padding: .5em 1em;
-				color: white;
-				margin: 0;
-				transition: all 300ms;
-				letter-spacing: .1em;
-				// outline: 0;
-				border: none;
-				text-transform: uppercase;
-			}
-			.btn:hover {
-				cursor: pointer;
-				color: black;
-			}
-			.btn.blue {
-				background-color: #0074D9;
-			}
-			.btn.green {
-				background-color: #2ecc71;
-			}
-			a {
-				text-decoration: none;
-			}
-		</style>
+		<link rel="stylesheet" href="style.css">
 	</head>
 	<body>
 		<div class="controls">
 			<form class="controls__form">
-				<input id="videoUrl" type="text">
+				<input id="videoUrl" type="text" placeholder="YouTube URL">
 				<button class="btn blue" id="goButton">Go Video!</button>
+				<a class="btn green" href="javascript:(function(){url='https://ultracloud.host/videoyay.html?url='+encodeURIComponent(window.location.href);window.open(url);})();">Bookmarklet</a>
 			</form>
-			<a class="btn green" href="javascript:(function(){url='https://ultracloud.host/videoyay.html?url='+encodeURIComponent(window.location.href);window.open(url);})();">Bookmarklet</a>
 		</div>
 		<div class="container">
 			<iframe
@@ -79,36 +24,5 @@
 			</iframe>
 		</div>
 	</body>
-	<script>
-	(function() {
-		function setIframeSource (url) {
-			let youtubeId = parseYoutubeId(url);
-			document.getElementById('videoFrame').src = `https://www.youtube.com/embed/${youtubeId}`;
-		}
-
-		function parseYoutubeId(url) {
-			return url.match(/(^|=|\/)([0-9A-Za-z_-]{11})(\/|&|$|\?|#)/)[2];
-		}
-
-		function setByButton () {
-			let url = document.getElementById('videoUrl').value;
-			return url;
-		}
-
-		function setByParam () {
-			let params = new URLSearchParams(document.location.search.substring(1));
-			let url = params.get("url");
-			if (url) {
-				setIframeSource(url);
-			}
-		}
-
-		document.getElementById('goButton').addEventListener('click', () => {
-			setIframeSource(setByButton());
-		});
-		
-		setByParam();
-
-	})();
-	</script>
+	<script src="main.js"></script>
 </html>
