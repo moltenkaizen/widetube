@@ -14,13 +14,13 @@ const reload = browserSync.reload;
 const paths = {
   source: {
     scripts: [
-      'src/js/*.js'
+      'src/js/main.js'
     ],
     styles: [
-      'src/scss/*.scss'
+      'src/scss/style.scss'
     ],
     markup: [
-      'src/*.html'
+      'src/index.html'
     ]
   },
   target: {
@@ -33,7 +33,11 @@ const paths = {
 gulp.task('serve', ['styles', 'markup', 'scripts'], ()  => {
 
   browserSync.init({
-    server: './build'
+    server: {
+      baseDir: 'build',
+      index: 'index.html'
+    },
+    notify: false
   })
 
   gulp.watch(paths.source.styles, ['styles'])
@@ -44,7 +48,8 @@ gulp.task('serve', ['styles', 'markup', 'scripts'], ()  => {
 
 gulp.task('markup', () => {
   gulp.src(paths.source.markup)
-    .pipe(gulp.dest('build'))
+    .pipe(plumber())
+    .pipe(gulp.dest('./build'))
     .pipe(reload({stream: true}))
 })
 
