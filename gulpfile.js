@@ -6,9 +6,10 @@ const cssnano = require('gulp-cssnano')
 const sourcemaps = require('gulp-sourcemaps')
 const plumber = require('gulp-plumber')
 const babel = require('gulp-babel')
+const gulpStylelint = require('gulp-stylelint')
 const sass = require('gulp-sass')
 const browserSync = require('browser-sync').create();
-const reload      = browserSync.reload;
+const reload = browserSync.reload;
 
 const paths = {
   source: {
@@ -16,8 +17,7 @@ const paths = {
       'src/js/*.js'
     ],
     styles: [
-      'src/scss/*.scss',
-      '!scr/scss/_*.scss'
+      'src/scss/*.scss'
     ],
     markup: [
       'src/*.html'
@@ -30,7 +30,6 @@ const paths = {
   }
 }
 
-// Static Server + watching scss/html files
 gulp.task('serve', ['styles', 'markup', 'scripts'], ()  => {
 
   browserSync.init({
@@ -76,11 +75,8 @@ gulp.task('scripts', () => {
     .pipe(reload({stream: true}))
 })
 
-gulp.task('lint-css', function lintCssTask() {
-  const gulpStylelint = require('gulp-stylelint')
-
-  return gulp
-    .src(paths.source.styles)
+gulp.task('lint-css', ()  => {
+  gulp.src(paths.source.styles)
     .pipe(gulpStylelint({
       reporters: [
         {formatter: 'string', console: true}
@@ -88,4 +84,4 @@ gulp.task('lint-css', function lintCssTask() {
     }))
 })
 
-gulp.task('default', ['scripts', 'styles', 'markup'])
+gulp.task('default', ['serve'])
