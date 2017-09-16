@@ -25,7 +25,7 @@
   const controlsForm = document.getElementsByClassName('controls__form')[0]
   const aTag = document.createElement('a')
   // javascript:(function(){url='https://ultracloud.host/widetube/?url='+encodeURIComponent(window.location.href);window.open(url);})();
-  aTag.setAttribute('href', `javascript:(function(){url="${window.location.href}?url="+encodeURIComponent(window.location.href);window.open(url);})();`)
+  aTag.setAttribute('href', `javascript:(function(){document.getElementById('movie_player').pauseVideo();url="${window.location.href}?url="+encodeURIComponent(window.location.href);window.open(url);})();`)
   aTag.classList.add('btn', 'green')
   aTag.innerHTML = 'Bookmarklet'
   controlsForm.appendChild(aTag)
