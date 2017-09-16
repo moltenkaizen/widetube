@@ -1,0 +1,41 @@
+{
+  "name": "widetube",
+  "version": "1.0.0",
+  "description": "Full-with youtube viewer",
+  "main": "main.js",
+  "scripts": {
+    "build": "gulp",
+    "dev": "gulp serve",
+    "styles": "gulp styles",
+    "scripts": "gulp scripts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/moltenkaizen/widetube.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/moltenkaizen/widetube/issues"
+  },
+  "homepage": "https://github.com/moltenkaizen/widetube#readme",
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-preset-env": "^1.6.0",
+    "browser-sync": "^2.18.13",
+    "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^4.0.0",
+    "gulp-babel": "^7.0.0",
+    "gulp-concat": "^2.6.1",
+    "gulp-cssnano": "^2.1.2",
+    "gulp-plumber": "^1.1.0",
+    "gulp-sass": "^3.1.0",
+    "gulp-sourcemaps": "^2.6.1",
+    "gulp-stylelint": "^5.0.0",
+    "gulp-uglify": "^3.0.0",
+    "stylelint-config-standard": "^17.0.0"
+  },
+  "dependencies": {
+    "stylelint": "^8.1.1"
+  }
+}
