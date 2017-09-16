@@ -3,9 +3,8 @@
 @import "_buttons";
 
 body {
-  background-color: $wet-asphalt;
+  background-color: black;
 }
-
 a {
   text-decoration: none;
 }
@@ -27,7 +26,8 @@ a {
 }
 
 .controls {
-  margin: 0.5em;
+  background-color: $midnight-blue;
+  padding: 0.5em;
 }
 
 .controls__form {

@@ -89,4 +89,4 @@ gulp.task('lint-css', ()  => {
     }))
 })
 
-gulp.task('default', ['serve'])
+gulp.task('default', ['markup', 'scripts', 'styles'])
