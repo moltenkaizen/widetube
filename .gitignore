@@ -60,4 +60,3 @@ typings/
 .env
 build/
 deploy.sh
-deploy.tar.gz
